@@ -7,8 +7,12 @@ module.exports = function (app) {
         var _body = req.body;
         login(_body.type, { email: _body.email, password: _body.password })
             .then(data => {
-                if (!data) return res.json(displayError());
-                else return res.json({ data: user, token: getToken(user), message: "Welcome back! " })
+                if (data === null) {
+                    return res.json(displayError());
+                }
+                else {
+                    return res.json({ data: data, token: getToken(data), message: "Welcome back! " });
+                }
             }).catch(err => {
                 return res.json(displayError());
             });

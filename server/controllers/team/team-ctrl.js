@@ -122,7 +122,6 @@ module.exports = function (app) {
         ).exec();
     }
     async function addSubArray(id, option) {
-        console.log(option);
         return await Team.findOneAndUpdate({ _id: id }, {
             $push: option
         }).exec();
