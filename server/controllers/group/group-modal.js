@@ -19,7 +19,7 @@ var groupSchema = new Schema({
     created_at: Date,
     updated_at: Date,
 });
-groupSchema.pre('save', function (next) {
+groupSchema.pre('save', (next)=> {
     var currentDate = new Date();
     this.updated_at = currentDate;
     if (!this.created_at)
